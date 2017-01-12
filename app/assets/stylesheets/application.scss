@@ -13,3 +13,16 @@
  // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+.main {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: #EF3340;
+  border: 10px groove gray;
+  border-radius: 10px;
+  padding: 25px;
+}
+.form-group {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}

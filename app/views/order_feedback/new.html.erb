@@ -1,22 +1,25 @@
 <div class="container">
-  <div class="col-md-8 col-md-offset-2">
-    <h1>
-      Your feedback for Order <%= @order.id %>
-    </h1>
+  <div class="col-md-8 col-md-offset-2 main">
+    <h1><strong>Feedback for Order <%= @order.id %></strong></h1>
     <%= form_for :order_feedback, url: order_feedback_index_path do |f| %>
     <div>
-      <!-- <% @order.order_items.each do |order_item| -%>
-      <div>
-      <%= order_item.meal_name %>
-      <input type="radio" name="feedback-#{order_item.id}" />
-      <input type="radio" name="feedback-#{order_item.id}" />
-      <input type="radio" name="feedback-#{order_item.id}" />
-      <input type="radio" name="feedback-#{order_item.id}" />
-      <input type="radio" name="feedback-#{order_item.id}" />
+      <% @order.order_items.each do |order_item| -%>
+      <div class="form-group">
+        <h3><%= order_item.meal_name %></h3>
+        <%= f.select(:order_item, options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]]), {}, {:class => "form-control"}) %>
+        <!-- <input type="radio" name="feedback-#{order_item.id}" />
+        <input type="radio" name="feedback-#{order_item.id}" />
+        <input type="radio" name="feedback-#{order_item.id}" />
+        <input type="radio" name="feedback-#{order_item.id}" />
+        <input type="radio" name="feedback-#{order_item.id}" /> -->
+      </div>
+    <% end -%>
+    <div class="form-group">
+      <h3>Delivery Rating (1 - Poor, 5 - Excellent):</h3>
+      <%= f.select(:delivery_rating, options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]]), {}, {:class => "form-control"}) %>
     </div>
-    <% end -%> -->
-    <div>
-      <%= f.label :comment, "Any comments (optional):" %>
+    <div class="form-group">
+      <h3>Any comments/suggestions (optional):</h3>
       <%= f.text_area :comment, class: "form-control", rows: "4" %>
     </div>
     <%= f.submit "SEND", class: "btn btn-success btn-lg" %>

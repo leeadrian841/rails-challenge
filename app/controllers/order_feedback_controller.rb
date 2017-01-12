@@ -34,6 +34,6 @@ class OrderFeedbackController < ApplicationController
   end
 
   def order_feedback_params
-    params.require(:order_feedback).permit(:order_id, :comment)
+    params.require(:order_feedback).permit(:order_id, :delivery_rating, :comment)
   end
 end

@@ -7,6 +7,7 @@
     <p>
       <% @feedbacks.each do |feedback| %>
       <li><%= feedback.order_id %></li>
+      <li><%= feedback.delivery_rating %></li>
       <li><%= feedback.comment %></li>
       <% end %>
     </p>
