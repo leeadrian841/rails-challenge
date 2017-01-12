@@ -1,11 +1,12 @@
-<div>
-  <h1>
-    Your feedback for Order <%= @order.id %>
-  </h1>
-  <%= form_for , url: order_feedback_index_path do |f| %>
-  <div>
-    <% @order.order_items.each do |order_item| -%>
+<div class="container">
+  <div class="col-md-8 col-md-offset-2">
+    <h1>
+      Your feedback for Order <%= @order.id %>
+    </h1>
+    <%= form_for :order_feedback, url: order_feedback_index_path do |f| %>
     <div>
+      <!-- <% @order.order_items.each do |order_item| -%>
+      <div>
       <%= order_item.meal_name %>
       <input type="radio" name="feedback-#{order_item.id}" />
       <input type="radio" name="feedback-#{order_item.id}" />
@@ -13,12 +14,13 @@
       <input type="radio" name="feedback-#{order_item.id}" />
       <input type="radio" name="feedback-#{order_item.id}" />
     </div>
-    <% end -%>
+    <% end -%> -->
     <div>
       <%= f.label :comment, "Any comments (optional):" %>
-      <%= f.text_area :comment, class: "form-group", rows: "4" %>
+      <%= f.text_area :comment, class: "form-control", rows: "4" %>
     </div>
-    <%= f.submit "SEND", class: "btn btn-primary btn-large" %>
+    <%= f.submit "SEND", class: "btn btn-success btn-lg" %>
   </div>
   <% end %>
+  </div>
 </div>
