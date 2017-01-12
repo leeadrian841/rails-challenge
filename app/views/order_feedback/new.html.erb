@@ -2,18 +2,23 @@
   <h1>
     Your feedback for Order <%= @order.id %>
   </h1>
+  <%= form_for , url: order_feedback_index_path do |f| %>
   <div>
     <% @order.order_items.each do |order_item| -%>
-      <div>
-        <%= order_item.meal_name %>
-        <input type="radio" name="feedback-#{order_item.id}" />
-        <input type="radio" name="feedback-#{order_item.id}" />
-        <input type="radio" name="feedback-#{order_item.id}" />
-        <input type="radio" name="feedback-#{order_item.id}" />
-        <input type="radio" name="feedback-#{order_item.id}" />
-      </div>
+    <div>
+      <%= order_item.meal_name %>
+      <input type="radio" name="feedback-#{order_item.id}" />
+      <input type="radio" name="feedback-#{order_item.id}" />
+      <input type="radio" name="feedback-#{order_item.id}" />
+      <input type="radio" name="feedback-#{order_item.id}" />
+      <input type="radio" name="feedback-#{order_item.id}" />
+    </div>
     <% end -%>
-
-    <input type="submit" value="Submit" />
+    <div>
+      <%= f.label :comment, "Any comments (optional):" %>
+      <%= f.text_area :comment, class: "form-group", rows: "4" %>
+    </div>
+    <%= f.submit "SEND", class: "btn btn-primary btn-large" %>
   </div>
+  <% end %>
 </div>

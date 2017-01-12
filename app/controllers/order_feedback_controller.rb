@@ -3,8 +3,14 @@ Order = Struct.new(:id, :date, :order_items)
 OrderItem = Struct.new(:id, :meal_name)
 
 class OrderFeedbackController < ApplicationController
+  def index
+  end
+
   def new
     @order = find_order(params[:id])
+  end
+
+  def create
   end
 
   private
