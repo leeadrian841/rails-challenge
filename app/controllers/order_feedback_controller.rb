@@ -16,7 +16,9 @@ class OrderFeedbackController < ApplicationController
   end
 
   def create
+    @order = find_order(params[:order_id])
     @feedback = OrderFeedback.new(order_feedback_params)
+    @feedback.order_id = params[:order_id].to_i
 
     if @feedback.save
       redirect_to order_feedback_index_path
