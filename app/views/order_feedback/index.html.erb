@@ -1,18 +1,21 @@
 <div class="container">
   <div class="col-md-8 col-md-offset-2 main">
-    <h2>Success!</h2>
-    <p>
-      You have completed the survey!
-    </p>
-    <p>
-      <% @feedbacks.each do |feedback| %>
-      <li><%= feedback.order_id %></li>
-      <li><%= feedback.item101_rating %></li>
-      <li><%= feedback.item121_rating %></li>
-      <li><%= feedback.delivery_rating %></li>
-      <li><%= feedback.comment %></li>
-      <% end %>
-    </p>
+    <div class="row logo"></div>
+    <div class="row">
+      <h2>Success!</h2>
+      <p>
+        You have completed the survey!
+      </p>
+      <!-- <p>
+        <% @feedbacks.each do |feedback| %>
+        <li><%= feedback.order_id %></li>
+        <li><%= feedback.item101_rating %></li>
+        <li><%= feedback.item121_rating %></li>
+        <li><%= feedback.delivery_rating %></li>
+        <li><%= feedback.comment %></li>
+        <% end %>
+      </p> -->
+    </div>
   </div>
 </div>
 <!-- <div class="container">

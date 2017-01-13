@@ -4,13 +4,18 @@ OrderItem = Struct.new(:id, :meal_name)
 
 class OrderFeedbackController < ApplicationController
   def index
-    @feedbacks = OrderFeedback.all
-    # if condition
-    #   render 'new'
+    # @feedbacks = OrderFeedback.all
+    @order_id = params[:order_id].to_i
+    # if @order_id
+    #   redirect_to new_order_feedback_path
     # end
   end
 
   def new
+    @order_id = params[:order_id].to_i
+    # if @order_id
+    #   redirect_to order_feedback_index_path
+    # end
     @order = find_order(params[:order_id])
     @feedback = OrderFeedback.new
   end
