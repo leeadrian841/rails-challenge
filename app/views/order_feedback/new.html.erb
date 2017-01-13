@@ -3,23 +3,31 @@
     <h1>Feedback for Order <%= @order.id %></h1>
     <%= form_for :order_feedback, url: order_feedback_index_path do |f| %>
     <div>
-      <% @order.order_items.each do |order_item| -%>
+      <div class="form-group">
+        <h4><strong>Samsui Chicken Rice (Very Poor = 1, Excellent = 5):</strong></h4>
+        <%= f.select(:item101_rating, options_for_select([['Very Poor', 1], ['Poor', 2], ['Average', 3], ['Good', 4], ['Excellent', 5]]), {}, {:class => "form-control"}) %>
+      </div>
+      <div class="form-group">
+        <h4><strong>Grilled Farm Fresh Chicken (Very Poor = 1, Excellent = 5):</strong></h4>
+        <%= f.select(:item121_rating, options_for_select([['Very Poor', 1], ['Poor', 2], ['Average', 3], ['Good', 4], ['Excellent', 5]]), {}, {:class => "form-control"}) %>
+      </div>
+      <!-- <% @order.order_items.each do |order_item| -%>
       <div class="form-group">
         <h3><%= order_item.meal_name %></h3>
         <%= f.select(:order_item, options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]]), {}, {:class => "form-control"}) %>
-        <!-- <input type="radio" name="feedback-#{order_item.id}" />
         <input type="radio" name="feedback-#{order_item.id}" />
         <input type="radio" name="feedback-#{order_item.id}" />
         <input type="radio" name="feedback-#{order_item.id}" />
-        <input type="radio" name="feedback-#{order_item.id}" /> -->
+        <input type="radio" name="feedback-#{order_item.id}" />
+        <input type="radio" name="feedback-#{order_item.id}" />
       </div>
-    <% end -%>
+      <% end -%> -->
     <div class="form-group">
-      <h3>Delivery Rating (1 - Poor, 5 - Excellent):</h3>
-      <%= f.select(:delivery_rating, options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5]]), {}, {:class => "form-control"}) %>
+      <h4><strong>Delivery Rating (Very Poor = 1, Excellent = 5):</strong></h4>
+      <%= f.select(:delivery_rating, options_for_select([['Very Poor', 1], ['Poor', 2], ['Average', 3], ['Good', 4], ['Excellent', 5]]), {}, {:class => "form-control"}) %>
     </div>
     <div class="form-group">
-      <h3>Any comments/suggestions (optional):</h3>
+      <h4><strong>Any comments/suggestions (optional):</strong></h4>
       <%= f.text_area :comment, class: "form-control", rows: "4" %>
     </div>
     <%= f.submit "SEND", class: "btn btn-success btn-lg" %>
