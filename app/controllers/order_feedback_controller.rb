@@ -6,16 +6,18 @@ class OrderFeedbackController < ApplicationController
   def index
     # @feedbacks = OrderFeedback.all
     @order_id = params[:order_id].to_i
-    # if @order_id
-    #   redirect_to new_order_feedback_path
-    # end
+    if OrderFeedback.where(order_id: @order_id).exists?
+      render 'index'
+    else
+      redirect_to new_order_feedback_path
+    end
   end
 
   def new
     @order_id = params[:order_id].to_i
-    # if @order_id
-    #   redirect_to order_feedback_index_path
-    # end
+    if OrderFeedback.where(order_id: @order_id).exists?
+      redirect_to order_feedback_index_path
+    end
     @order = find_order(params[:order_id])
     @feedback = OrderFeedback.new
   end
