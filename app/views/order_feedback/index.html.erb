@@ -1,9 +1,14 @@
 <div class="container">
   <div class="col-md-8 col-md-offset-2 index">
-    <div class="row logo"></div>
-    <div class="row">
-      <h2><strong>SUCCESS!</strong></h2>
-      <h3>You have completed the survey!</h3>
+    <% if notice %>
+    <div class="alert alert-success" role="alert">
+      <%= notice %>
     </div>
+    <% end %>
+    <% if alert %>
+    <div class="alert alert-danger" role="alert">
+      <%= alert %>
+    </div>
+    <% end %>
   </div>
 </div>

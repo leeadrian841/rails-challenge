@@ -4,9 +4,9 @@ OrderItem = Struct.new(:id, :meal_name)
 
 class OrderFeedbackController < ApplicationController
   def index
-    # @feedbacks = OrderFeedback.all
     @order_id = params[:order_id].to_i
     if OrderFeedback.where(order_id: @order_id).exists?
+      # flash[:alert]= "ERROR! You have already done the feedback!"
       render 'index'
     else
       redirect_to new_order_feedback_path
@@ -16,6 +16,7 @@ class OrderFeedbackController < ApplicationController
   def new
     @order_id = params[:order_id].to_i
     if OrderFeedback.where(order_id: @order_id).exists?
+      flash[:alert]= "ERROR! You have already done the feedback!"
       redirect_to order_feedback_index_path
     end
     @order = find_order(params[:order_id])
@@ -29,6 +30,7 @@ class OrderFeedbackController < ApplicationController
 
     if @feedback.save
       redirect_to order_feedback_index_path
+      flash[:notice]= "SUCCESS! You have done the feedback!"
     end
   end
 
